@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+    <title>Rapid React</title>
+  </head>
+  <body>
+    <h1> FRC 2022 : Rapid React</h1>
+    <form id="scoutingForm" onsubmit="return validateAndSubmit()">
+      <div id="scoutingInterface"></div>
+      <!-- Prevent implicit submission of the form -->
+      <button type="submit" disabled="" style="display:none" aria-hidden="true"></button>
+      <button type="submit">Submit</button>
+    </form>
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+    <script src="collapsible.js"></script>
+    <script src="submission.js"></script>
+  
+  </body>
+</html>
