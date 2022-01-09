@@ -2,7 +2,7 @@ let target = document.getElementById("scoutingInterface");
 
 for (i in ScoutingSource) {
   tab = addItem("div", "tab");
-  tabHeader = tab.appendChild(addItem("header", "tabHeader collapsible", i));
+  tabHeader = tab.appendChild(addItem("div", "tabHeader", i));
   content = tab.appendChild(addItem("div", "content"));
   
   for (let j in ScoutingSource[i]) {

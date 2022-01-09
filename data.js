@@ -8,25 +8,26 @@ const ScoutingSource = {
     ]],
     "No Show" : ["checkbox"],
     "Alliance" : ["options", [ "Red", "Blue" ]],
-    "Start Position" : ["options", [ "Left", "Middle", "Right" ]],
+    "Starting Tarmac" : ["options", [ "Left", "Middle", "Right" ]],
   },
   "Autonomous" : {
     "Auto Upper" : ["number"],
     "Auto Lower" : ["number"],
-    "Exit Initiation Line" : ["checkbox"]
+    "Taxi" : ["checkbox"]
   },
   "Teleop" : {
     "Teleop Upper" : ["number"],
     "Teleop Lower" : ["number"],
-    "Rotation Control" : ["checkbox"],
-    "Position Control" : ["checkbox"],
-    "Shoot from Trench" : ["checkbox"],
-    "Shoot from Target Zone" : ["checkbox"],
+    "Shoot from Launchpad" : ["checkbox"],
     "Effective Defensive Gameplay" : ["checkbox"]
   },
   "Endgame" : {
-    "Hang" : ["checkbox"],
-    "Active Leveling Method" : ["checkbox"]
+    "Rung thing" : ["options", [
+      "idk what its called",
+      "please help",
+      "ill read the manual later",
+      "i just now that there are four"
+    ]]
   },
   "Postgame" : {
     "Technical Issues" : ["checkbox"],
