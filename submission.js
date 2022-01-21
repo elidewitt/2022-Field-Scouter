@@ -7,7 +7,7 @@ function validate() {
     switch (i.tagName) {
       case "SELECT" :
       case "INPUT" :
-        if(!Boolean(String(i.value))) {
+        if(!Boolean(String(i.value)) && i.type != "number") {
           error += " * " + i.id + "\n";
           passed = false;
         }
@@ -37,6 +37,7 @@ function validateAndSubmit() {
     window.alert("Success!");
   } else {
     window.alert(validation.error);
+    return false;
   }
   //return validation.passed;
 }
@@ -65,7 +66,7 @@ function createJSON() {
 
 function download(fileName, text) {
   let element = document.createElement("a");
-  element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
+  element.setAttribute("href", "data:text/plain;charset=utf-16," + encodeURIComponent(text + "\r\n"));
   element.setAttribute("download", fileName);
 
   element.style.display = "none";

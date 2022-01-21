@@ -1,13 +1,13 @@
-var coll = document.getElementsByClassName("tabHeader");
+const tabHeaders = document.getElementsByClassName("tabHeader");
 
-for (let i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
+for (let i = 0; i < tabHeaders.length; i++) {
+  tabHeaders[i].addEventListener("click", function() {
     this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
+    let content = this.nextElementSibling;
+    if (content.style.maxHeight) {
       content.style.maxHeight = null;
     } else {
       content.style.maxHeight = content.scrollHeight + "px";
-    } 
+    }
   });
 }

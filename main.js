@@ -1,6 +1,6 @@
 let target = document.getElementById("scoutingInterface");
 
-for (i in ScoutingSource) {
+for (let i in ScoutingSource) {
   tab = addItem("div", "tab");
   tabHeader = tab.appendChild(addItem("div", "tabHeader", i));
   content = tab.appendChild(addItem("div", "content"));
@@ -15,7 +15,20 @@ for (i in ScoutingSource) {
       case "checkbox":
         entry = field.appendChild(addItem("input", ScoutingSource[i][j][0]));
         entry.type = ScoutingSource[i][j][0];
+        if (entry.type == "number") entry.min = 0; entry.max = 200;
         break;
+      case "incDec":
+        entry = field.appendChild(addItem("input", ScoutingSource[i][j][0]));
+        entry.type = "number";
+        entry.min = 0;
+        entry.max = 200;
+        entry.value = 0;
+        inc = field.appendChild(addItem("button", "incDecButton", "↑"));
+        inc.onclick = function() { document.getElementById(j).value ++; return false; }
+        dec = field.appendChild(addItem("button", "incDecButton", "↓"));
+        dec.onclick = function() { document.getElementById(j).value --; return false; }
+        break;
+        // entry.setAttribute("readyonly", "readonly");
       case "options":
         entry = field.appendChild(addItem("select", ScoutingSource[i][j][0]));
         blankOption = entry.appendChild(addItem("option"));
