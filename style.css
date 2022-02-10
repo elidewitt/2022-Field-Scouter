@@ -3,7 +3,6 @@
   * f04b4c red
   * e7e7e7 creme */
 
-
 * {
   box-sizing: border-box;
   font-size: 48px;
@@ -60,6 +59,13 @@ div {
   margin: 2px;
 }
 
+div.group {
+  padding: 2px;
+  margin: 20px;
+  
+  background-color: #FFFFFF20
+}
+
 /*.field > label {
     text-shadow:
     -1px -1px 0 #FFF,
@@ -67,6 +73,8 @@ div {
     -1px 1px 0 #FFF,
     1px 1px 0 #FFF;
 } */
+
+
 
 input:not([type=checkbox]), select, textarea, button.incDecButton {
   padding: 12px;
@@ -78,8 +86,9 @@ input:not([type=checkbox]), select, textarea, button.incDecButton {
   width: 40%;
 }
 
-input.incDec {
+input.increment {
   width: 20%;
+  pointer-events: none;
 }
 
 button.incDecButton {
@@ -102,7 +111,7 @@ input[type=checkbox] {
   height: 48px;
 }
 
-button[type=submit], .tabHeader {
+button[type=submit], .header {
   width: 100%;
   background-color: #f04b4c;
   color: #e7e7e7;
@@ -120,6 +129,30 @@ button[type=submit], .tabHeader {
   clear: both;
 }
 
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color:#e7e7e7;
+  margin: auto;
+  padding: 20px;
+  width: 200%;
+}
+
+
 
 
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
@@ -134,7 +167,7 @@ button[type=submit], .tabHeader {
   }
 }
 
-.active, .tabHeader:hover, button[type=submit]:hover {
+.active, .header:hover, button[type=submit]:hover {
   background-color: #882a2a;
 }
 
@@ -145,4 +178,26 @@ button[type=submit], .tabHeader {
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   background-color: #e7e7e720;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000000;
+  color: white;
+  text-align: center;
+}
+
+.footer-content {
+  padding: 14px 20px;
+  font-size: 32px;
+  width: 30%;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f04b4c;
+  color: #e7e7e7;
 }
