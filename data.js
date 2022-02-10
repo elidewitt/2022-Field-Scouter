@@ -9,6 +9,7 @@ TEXTAREA for comments + validation
 
 */
 
+
 const ScoutingSource = {
   "Pregame" : [
     {
