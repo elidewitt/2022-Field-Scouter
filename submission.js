@@ -25,8 +25,8 @@ function validateAndSubmit() {
   if (validation.passed) {
 
     //manually set local storage for scouter name and match num
-    //localStorage.setItem("Scouter Name", document.getElementById("Scouter Name").value);
-    //localStorage.setItem("Match Number", Number(document.getElementById("Match Number").value) + 1);
+    localStorage.setItem("Scouter Name", document.getElementById("Scouter Name").value);
+    localStorage.setItem("Match Number", Number(document.getElementById("Match Number").value) + 1);
 
     fileName = document.getElementById("Match Number").value + "-" + document.getElementById("Team Number").value.replace(/ .*/,'') + "_F.json";
     
@@ -50,9 +50,12 @@ function createJSON() {
       switch (ScoutingSource[i][j][0]) {
         case "text":
         case "options":
-          docObject[j] = String(element.value);
+        case "textarea":
+          docObject[j + "-"  + i] = String(element.value);
+          console.log(element.value);
           break;
         case "number":
+        case "incDec":
           docObject[j] = Number(element.value);
           break;
         case "checkbox":
