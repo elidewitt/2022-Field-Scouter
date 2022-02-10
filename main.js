@@ -1,5 +1,6 @@
 const target = document.getElementById("scoutingInterface");
 
+
 for (let category in ScoutingSource) {
   let category_ = createElement("div", "category");
   let header_ = category_.appendChild(createElement("div", "header", category));
