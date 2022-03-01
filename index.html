@@ -3,7 +3,8 @@
   <head>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8">
-    <title>Rapid React</title>
+    <title>Field Scout</title>
+    <link rel="shortcut icon" type="image/png" href="icon.png"/>
   </head>
   <body>
     <br><img width="100%" src="rapidReact.png"><br>
@@ -13,6 +14,7 @@
       <!-- Prevent implicit submission of the form -->
       <button type="submit" disabled="" style="display:none" aria-hidden="true"></button>
       <button type="submit">Submit</button><br><br><br>
+      
       
     </form>
     
@@ -25,7 +27,7 @@
     <div id="arenaModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
-        <img width="100%" src="arena.png">
+        <img width="100%" src="arenaV2.png">
       </div>
     </div>
     
@@ -34,4 +36,14 @@
     <script src="methods.js"></script>
     <script src="submission.js"></script>
   </body>
+  <script>
+    if (localStorage.getItem("Pregame-Scouter Name")) {
+      //alert("found scouter [" + localStorage.getItem("scouter") + "]");
+      document.getElementById("Pregame-Scouter Name").value = localStorage.getItem("Pregame-Scouter Name");
+    }
+    if (localStorage.getItem("Pregame-Match Number")) {
+      //alert("found matchNum [" + localStorage.getItem("matchNum") + "]");
+      document.getElementById("Pregame-Match Number").value = localStorage.getItem("Pregame-Match Number");
+    }
+  </script>
 </html>

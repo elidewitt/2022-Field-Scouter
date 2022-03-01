@@ -2,19 +2,36 @@
 function validate() {
   let passed = true;
   let error = "We found issues with the following inputs: \n";
-  let elements = document.getElementById("scoutingForm").elements;
-  for (i of elements) {
-    switch (i.tagName) {
+  
+  // If the robot is a no show, only validate the scouter, match number, team number, and alliace
+  if (document.getElementById("Pregame-No Show").checked) {
+    const noShowReqs = ["Pregame-Scouter Name", "Pregame-Match Number", "Pregame-Team Number", "Pregame-Alliance", "Postgame-Final Alliance Score"];
+    for (req of noShowReqs) {
+      elt = document.getElementById(req);
+      switch (elt.tagName) {
+          case "SELECT" :
+          case "INPUT" :
+            if(!Boolean(String(elt.value))) {
+              error += " * " + elt.id + "\n";
+              passed = false;
+            }
+            break;
+      }
+    }
+    return { passed, error };
+  }
+  for (elt of document.getElementById("scoutingForm").elements) {
+    switch (elt.tagName) {
       case "SELECT" :
       case "INPUT" :
-        if(!Boolean(String(i.value)) && i.type != "number") {
-          error += " * " + i.id + "\n";
+        if(!Boolean(String(elt.value))) {
+          error += " * " + elt.id + "\n";
           passed = false;
         }
         break;
     }
   }
-  return { passed, error }
+  return { passed, error };
 }
 
 function validateAndSubmit() {
@@ -25,42 +42,43 @@ function validateAndSubmit() {
   if (validation.passed) {
 
     //manually set local storage for scouter name and match num
-    localStorage.setItem("Scouter Name", document.getElementById("Scouter Name").value);
-    localStorage.setItem("Match Number", Number(document.getElementById("Match Number").value) + 1);
+    localStorage.setItem("Pregame-Scouter Name", document.getElementById("Pregame-Scouter Name").value);
+    localStorage.setItem("Pregame-Match Number", Number(document.getElementById("Pregame-Match Number").value) + 1);
 
-    fileName = document.getElementById("Match Number").value + "-" + document.getElementById("Team Number").value.replace(/ .*/,'') + "_F.json";
+    fileName =  "F_" + document.getElementById("Pregame-Match Number").value + "-" + document.getElementById("Pregame-Team Number").value.replace(/ .*/,'') + ".json";
     
     data = createJSON();
 
     fileText = JSON.stringify(data);
     download(fileName, fileText);
     window.alert("Success!");
+    return true;
   } else {
     window.alert(validation.error);
     return false;
   }
-  //return validation.passed;
 }
 
 function createJSON() {
   let docObject = {};
-  for (i in ScoutingSource) {
-    for (j in ScoutingSource[i]) {
-      let element = document.getElementById(j);
-      switch (ScoutingSource[i][j][0]) {
-        case "text":
-        case "options":
-        case "textarea":
-          docObject[j + "-"  + i] = String(element.value);
-          console.log(element.value);
-          break;
-        case "number":
-        case "incDec":
-          docObject[j] = Number(element.value);
-          break;
-        case "checkbox":
-          docObject[j] = Number(element.checked);
-          break;
+  for (let category in ScoutingSource) {
+    for (let group in ScoutingSource[category]) {
+      for (let field in ScoutingSource[category][group]) {
+        let element = document.getElementById(category + "-"  + field);
+        switch (ScoutingSource[category][group][field][0]) {
+          case "text":
+          case "options":
+          case "textarea":
+            docObject[category + "-"  + field] = String(element.value);
+            break;
+          case "number":
+          case "increment":
+            docObject[category + "-"  + field] = Number(element.value);
+            break;
+          case "checkbox":
+            docObject[category + "-"  + field] = Number(element.checked);
+            break;
+        }
       }
     }
   }

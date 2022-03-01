@@ -1,8 +1,8 @@
 const target = document.getElementById("scoutingInterface");
 
-
 for (let category in ScoutingSource) {
   let category_ = createElement("div", "category");
+  category_.id = category;
   let header_ = category_.appendChild(createElement("div", "header", category));
   let content_ = category_.appendChild(createElement("div", "content"));
   
@@ -31,15 +31,24 @@ for (let category in ScoutingSource) {
           
           input_.type = "number";
           input_.min = 0;
-          input_.max = 200;
+          input_.max = 100;
           input_.value = 0;
           
-          inc_ = field_.appendChild(createElement("button", "incDecButton", "↑"));
-          inc_.onclick = function() { document.getElementById(category + "-" + field).value ++; return false; }
+          inc_ = field_.appendChild(createElement("button", "incDecButton", "+"));
+          inc_.onclick = function() {
+            if (document.getElementById(category + "-" + field).value < Number(input_.max)) {
+              document.getElementById(category + "-" + field).value ++;
+            }
+            return false;
+          }
           
-          dec_ = field_.appendChild(createElement("button", "incDecButton", "↓"));
-          dec_.onclick = function() { document.getElementById(category + "-" + field).value --; return false; }
-          
+          dec_ = field_.appendChild(createElement("button", "incDecButton", "-"));
+          dec_.onclick = function() {
+            if (document.getElementById(category + "-" + field).value > Number(input_.min)) { 
+              document.getElementById(category + "-" + field).value --;
+            }
+            return false;
+          }
           break;
           
         case "textarea":

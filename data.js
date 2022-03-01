@@ -1,24 +1,12 @@
-/*
-
-How do we want to measure starting position?
-TEXTAREA for comments + validation
-
-* Label different sectors on the arena image
-* Shots attempted vs shots successfully scored
-  * in post game (estimate success rate)
-
-*/
-
-
 const ScoutingSource = {
   "Pregame" : [
     {
       "Scouter Name" : ["text"],
       "Match Number" : ["number"],
       "Team Number" : ["options", [ // May need to be updated (last updated 1/14/2022)
-        "93 : NEW Apple Corps",
-        "167 : Children of the Corn",
-        "876 : Thunder Robotics",
+        "0093 : NEW Apple Corps",
+        "0167 : Children of the Corn",
+        "0876 : Thunder Robotics",
         "1675 : UPS (Ultimate Protection Squad)",
         "1732 : Hilltoppers",
         "2052 : KnightKrawler",
@@ -73,22 +61,26 @@ const ScoutingSource = {
         "7311 : Boring Robots",
         "7797 : Cloquet's RipSaw Robotics",
         "7893 : Maple Lake High School",
-        "8836 : Chisholm695"
+        "8836 : Wayne Enterprises Inc. #695",
       ]],
-      "No Show" : ["checkbox"],
+      "No Show" : ["checkbox"]
+    },
+    {
       "Alliance" : ["options", [ "Red", "Blue" ]],
-      "Starting Tarmac" : ["options", [ "Left", "Right" ]]
+      "Starting Tarmac" : ["options", [ "Left", "Right" ]],
+      "Tarmac Position" : ["options", [ "Hub", "Far", "Middle", "Corner"]]
     }
   ],
   "Autonomous" : [
     {
       "Taxi" : ["checkbox"],
       "Attempted Pickup" : ["checkbox"]
+      //"Human Shot" : ["checkbox"]
     },
     {
-      "Upper Short" : ["increment"],
-      "Upper Mid" : ["increment"],
-      "Upper Long" : ["increment"],
+      "Upper Close Range" : ["increment"],
+      "Upper Mid Range" : ["increment"],
+      "Upper Long Range" : ["increment"],
       "Upper Misses" : ["increment"]
     },
     {
@@ -98,9 +90,9 @@ const ScoutingSource = {
   ],
   "Teleop" : [
     {
-      "Upper Short" : ["increment"],
-      "Upper Mid" : ["increment"],
-      "Upper Long" : ["increment"],
+      "Upper Close Range" : ["increment"],
+      "Upper Mid Range" : ["increment"],
+      "Upper Long Range" : ["increment"],
       "Upper Misses" : ["increment"]
     },
     {
@@ -119,13 +111,17 @@ const ScoutingSource = {
         "Mid Rung",
         "High Rung",
         "Traversal Rung"
-      ]]
+      ]],
+      "Climb Duration (sec)" : ["increment"]
     }
   ],
   "Postgame" : [
     {
+      
+      "Final Alliance Score" : ["number"]
+    },
+    {
       "Technical Issues" : ["textarea"],
-      "Final Alliance Score" : ["number"],
       "Referee Involvement": ["checkbox"]
     }
   ]
